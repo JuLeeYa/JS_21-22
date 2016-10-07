@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/dist/lodash.js"></script>
+	<script  src = "js/dist/script.js "></script>
+</head>
+<body>
+	
+	<script type="text/html" id="page">
+		
+		<div class="container">
+			<h3><%= returnQuestions.title.value %></h3>
+				<form action="#" class="quiz">
+					<div class="content">
+						<% returnQuestions.question_list.forEach(function(item, n) { %>
+						<data-div onClick="answersArr.fillArray(event);">
+							<div class="question"><%- item.text %></div>
+							<% item.answers.forEach(function(variant, i) { %>
+							<label>
+								<input id="ch<%=n+''+i%>" data-label="<%=variant%>" data-num="<%=n%>" data-go="true" class="option" type="radio" name="ch<%=n%>"> <%= variant %>
+							</label></br>
+							<% }); %>
+						</data-div>
+						<% }); %>
+
+
+					</div>
+
+					<button class="submit" id = "check_result">Проверить мои результаты</button>
+
+				</form>
+
+				<div id="modal_form">
+					<span id="modal_close">X</span> 
+
+					<p class="right">Вы ответили правильно</p>
+					<p class="wrong">Вы допустили ошибку</p>
+				</div>
+				<div id="overlay"></div>
+
+			</div>
+
+		</div>
+
+	</script>
+
+</body>
+</html>
